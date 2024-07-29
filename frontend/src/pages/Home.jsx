@@ -13,14 +13,14 @@ const Home = () => {
   }, []);
 
   const fetchNotes = async () => {
-    const response = await axios.get('http://localhost:5000/notes');
+    const response = await axios.get('notes-app-backend-ten.vercel.app/notes');
     setNotes(response.data);
   };
 
   const addNote = async () => {
     if (newNote.trim()) {
       setErrorNote(false);
-      const response = await axios.post('http://localhost:5000/notes', {
+      const response = await axios.post('notes-app-backend-ten.vercel.app/notes', {
         content: newNote,
       });
       setNotes([...notes, response.data]);
@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   const deleteNote = async (id) => {
-    await axios.delete(`http://localhost:5000/notes/${id}`);
+    await axios.delete(`notes-app-backend-ten.vercel.app/${id}`);
     setNotes(notes.filter((note) => note._id !== id));
   };
 
